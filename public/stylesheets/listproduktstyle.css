@@ -39,16 +39,18 @@ body {
     .name{
         padding-bottom: 5px;
     }
-      
+
+    .laddaProdukter-btn{ /*position for laddar-produkter button*/
+        position:absolute;
+        right: 200px;
+        top: 25px;
+    }  
     .nyprodukt-btn{ /*position for button*/
         position:absolute;
         right: 20px;
         top: 25px;
     }
-    .nyprodukt-btn:hover{ /*button expand*/
-        transform: scale(1.1);
-        transition: 0.2s;
-    }
+   
     .submit-btn:hover{ /*button expand*/
         transform: scale(1.1);
         transition: transform;
@@ -79,10 +81,14 @@ body {
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         width: 100%; 
     }
-    tr:first-child{ /*Top row color*/
+    thead{ /*thead color*/
+        border: solid 2px;
         background-color: rgb(168, 168, 168);
     }
-    tr:nth-child(even){ /*Color for 2nd and 4th row*/
+    /*tr:first-child{ Top row color
+        background-color: rgb(168, 168, 168);
+    }*/
+    tbody>tr:nth-child(odd){ /*Light gray for odd number*/
         background-color: #efeded;
     }
     td,th{              

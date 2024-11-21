@@ -129,7 +129,7 @@
             <% products.forEach(product => { %> 
                 <div class="container">
                     <!--link to produktkort--> 
-                    <a href="http://localhost:3000/products/black-dress"> 
+                    <a href="/products/<%= product.urlSlug %>"> 
                     <div class="cloth-container">     
                             <div class="blackdress-container">                            
                                 <img src="<%= product.image %>" alt="<%= product.name %>">
@@ -211,7 +211,7 @@
                     </div>
                 </div>
             </div>
-            <script src="freakyscript.js"></script>
+            <script src="/js/accordion.js"></script>
 
             <div class="copy">
             <p><a href="aboutfreaky.html">&copy;Freaky Fashion</a></p>

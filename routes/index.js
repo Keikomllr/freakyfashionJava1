@@ -2,22 +2,25 @@ var express = require('express');
 var router = express.Router();
 const products = require('../data/products'); //inport products.js
 
+const Database = require('better-sqlite3');
+
+// データベース接続
+const db = new Database('./db/admin.db', { 
+  verbose: console.log,
+  fileMustExist: true
+});
+
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Freaky Fasion', products: products });
 });
 
-/*Rendaring to BLACK DRESS (/products/black-dress) page.
-router.get('/products/black-dress', function(req, res, next) {
-  res.render('products/black-dress', { title: 'Black Dress', products: products });
-}); */
 
-/*router.get('/products/black-dress', function(req, res, next) {
-  res.render('products/black-dress', { title: 'Express' });
-});*/
 
-//GET BLACK DRESS page(/products/black-dress) .
-//Rout for only displaying Black dress (id:1) product 
 
 // ----SHUFFLE FUNCTION----
 function shuffleArray(array) {
@@ -27,12 +30,14 @@ function shuffleArray(array) {
   }
 }
 
-// ROUTE for Display to black dress page.
-router.get('/products/black-dress', (req, res) => {
+// TODO: Flytta till routes-mapp details page.
+router.get('/products/:urlSlug', (req, res) => {
 
-  //Display only "ID:1" 
-  const product = products.find(p => p.id === 1);
+  const urlSlug = req.params.urlSlug; // get Slug from URL 
+  const product = products.find(p => p.urlSlug === urlSlug); //Search the product
 
+  //const row = select.get(urlSlug);
+  
   if (product) {
     // SHUFFLE "products"  
     shuffleArray(products);
@@ -40,8 +45,8 @@ router.get('/products/black-dress', (req, res) => {
     const selectedProducts = products.slice(0, 3);
 
     // Give "product" and "selectedProducts" to ejs templete.
-    res.render('products/black-dress', {
-      title: 'Black Dress',
+    res.render('products/details', {
+      title: 'Products Details',
       product,
       selectedProducts
     });
@@ -53,16 +58,94 @@ router.get('/products/black-dress', (req, res) => {
 
 
 
+//--------ADMIN------------
 
 
-/*Rendaring to PRODUCTS (admin/products) page. */
+// `/admin/products` 商品一覧表示
+router.get('/admin/products', (req, res) => {
+  try {
+    const select = db.prepare(`
+      SELECT id, namn, d_message, photo, sku, amount
+      FROM posts
+    `);
+    const newProducts = select.all(); // 全商品のデータを取得
+    res.render('admin/products', { title: 'produkter', newProducts });
+  } catch (error) {
+    console.error('エラー:', error.message);
+    res.status(500).send('商品一覧の取得中にエラーが発生しました');
+  }
+});
+
+// `/admin/products/new` 新商品の追加フォーム表示
+router.get('/admin/products/new', (req, res) => {
+  res.render('admin/products/new', { title: 'Ny produkt' });
+});
+
+// `/admin/products/new` 新商品の追加処理
+router.post('/admin/products/new', (req, res) => {
+  try {
+    const insert = db.prepare(`
+      INSERT INTO posts (namn, d_message, photo, sku, amount)
+      VALUES (@namn, @d_message, @photo, @sku, @amount)
+    `);
+
+    // フォームデータをデータベースに保存
+    const result = insert.run({
+      namn: req.body.namn,
+      d_message: req.body.d_message,
+      photo: req.body.photo,
+      sku: req.body.sku,
+      amount: req.body.amount,
+    });
+
+    console.log('Added a new product:', result);
+    res.redirect('/admin/products'); // リストページにリダイレクト
+  } catch (error) {
+    console.error('エラー:', error.message);
+    res.status(500).send('商品追加中にエラーが発生しました');
+  }
+});
+
+
+/*Rendaring to PRODUCTS (admin/products) page. 
 router.get('/admin/products', function(req, res, next) {
-  res.render('admin/products', { title: 'Admin' });
-});
+ */  
+   /*try { 
+    // TODO: Lägg till ny product
+    const select = db.prepare(`
+      SELECT id,
+             namn,
+             d_message,
+             photo,
+             sku,
+             amount  
+        FROM posts
+    `);
+  
+    // Kör SQL SELECT
+    const rows = select.all();
+    //res.json(rows); // JSON形式で返す
+  
+    res.render('admin/products', { 
+      title: 'Ny product',
+      posts: rows 
+    });
 
-/*Rendaring to NEW (admin/products/new) page. */
+  } catch (error) {
+    console.error('データベースエラー:', error.message);
+    res.status(500).send('内部エラーが発生しました');
+  }
+}); 
+*/
+
+
+
+/*Rendaring to NEW (admin/products/new) page. 
 router.get('/admin/products/new', function(req, res, next) {
-  res.render('admin/products/new', { title: 'Ny product' });
+  
+  res.render('admin/products/new', {title: 'Admin' });
 });
+*/
+
 
 module.exports = router;

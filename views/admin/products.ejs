@@ -23,45 +23,41 @@
         
          <div class="item sidebar">
             <aside>
-                <h3>produkter</h3>
+                <h3><%= title %></h3>
             </aside>
         </div>
 
         <main class="item main"> <!--MAIN-->                        
             
-            <h2>Produkter</h2>
-            <!--Submit button for new product -->
+            <h2><%= title %></h2>
+            <div id="loadProducts" class="laddaProdukter-btn">
+                <input type="submit" name="btn_confirm" value="Ladda produkter" class="button-6" with="80%">                  
+            </div>
+            
+                <!--Lead to new product page-->
                 <div class="nyprodukt-btn">
-                    <a href="http://localhost:5500/admin/products/new.html"><input type="submit" name="btn_confirm" value="Ny produkt" class="button-6"></a>                  
+                    <a href="/admin/products/new"><input type="submit" name="btn_confirm" value="Ny produkt" class="button-6"></a>                  
                 </div>
 
             <!-----PRODUCT TABLE----->
+            
             <table  class="ny_produkt_form" >                
-                <tbody>                      <!--Table body -Whole table-->       
-                    <tr>                     <!--Table row  -horizontel-->
-                        <th>Namn</th>        <!--Table head -top-->
-                        <th>SKU</th>
-                        <th>Pris</th>
-                    </tr>
-                    
-                    <tr>   
-                        <td>Svart T-Shirt</td>   <!--Table data-->
-                        <td>AAA111</td>
-                        <td>199</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Vit T-Shirt</td>
-                        <td>BBB111</td>
-                        <td>199</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">...</td> <!--double row-->
-                        <td rowspan="2"></td>
-                        <td rowspan="2"></td>
-                    </tr>
+                    <thead>                <!--Table body -Whole table-->       
+                        <tr>                     <!--Table row  -horizontel-->
+                            <th>Namn</th>        <!--Table head -top-->
+                            <th>SKU</th>
+                            <th>Pris</th>
+                        </tr>
+                    </thead>
+                    <tbody id="newProductTableBody">
+                        <!-- JavaScriptでここに行が挿入されます -->       
+                   
                 </tbody>
              </table>
+
+             <!-- 外部JavaScriptファイルを読み込み -->
+             <script src="/js/newPrducts.js"></script>
+             
         </main>
         
       <section class="item footer">
