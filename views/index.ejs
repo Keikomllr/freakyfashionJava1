@@ -1,11 +1,226 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Freaky fashion is a website that features unique and stylish clothing.">  <!--Describing website for search engine--> 
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <!--Store icon-->
+    <link rel="icon" href="images/black-cat (1).png" type="image/storeicon"> <!--STORE ICON--> 
+    <link rel="stylesheet" a href="/stylesheets/style.css"> <!--link to Stylesheet-->
+</head>
+<body>
+
+    <header>
+       <div class="head-container">
+            <div class="headitem-1">    <!--LOGOTYPE-->
+                <img src="images/logotype.jpg"  alt="logotype">
+            </div>
+            <div class="head-container2">
+                <div class="headitem-2">
+                    <input type="search" placeholder="Sök produkt">            <!--search products from here-->
+                </div>
+                <div class="headitem-3"> <!--FAVORITE ICON-->
+                    <a href="http://localhost.5000/favorit/" target="_blank"><img src="images/heartblack.png" alt="favorit_icon"></a>
+                    <!--Open the link with a new tab-->
+                </div>
+                <div class="headitem-4"> <!--SHOPPING CART-->
+                    <a href="http://localhost.5000/shopping/" target="_blank"><img src="images/shoppingbag.png" alt="shopping_icon"></a>
+                </div>    
+            </div>
+       </div> 
+
+        <nav aria-rabel="primary-navigation">                      <!--navigater-->            
+             <ul>
+                <li>
+                    <a href="#news">Nyheter</a>
+                </li>
+                <li>
+                    <a href="#toplist">Topplistan</a>
+                </li>
+                <li>
+                    <a href="#sale">Rea</a>
+                </li>
+                <li>
+                    <a href="#campain">Kampanjer</a>
+                </li>
+            </ul>
+        </nav>   
+    </header>
+
+  
+   
+    <main>
+        <article>
+            <div class="sale_container">
+              <div class="sale-textl">  <!--SALE-->
+                <span>MID SEASON SALE: UP TO 50% OFF</span>
+            </div>
+            <br>
+              <div class="sale-text2"> 
+                <a href="#sale">SHOW NOW</a>
+            </div>
+            <br>
+            </div>
+  
+      </article>
+        <section id="customer-service">            <!--Chat icon-->
+            <img src="images/chat.png" alt="chat">
+        </section>
+
+        <article class="hero">   <!--HERO-->
+            <a href="http://localhost:5500/product-details.html"> <!--CLICK AND JUMP TO THE LINK-->
+                
+                <div class="hero-container">
+                    <div class="hero1">   <!--HERO-->
+
+                        <picture> <!--picture changes by size-->
+                            <!--smaller than 640px-->
+                            <source media="(max-width: 640px)" srcset="images/puffy-jacket-small.jpg" alt="puffy-jacket-zoom">
+                            <!--bigger than 640px-->    
+                            <img src="images/puffy-jacket.jpg" alt="puffy-jacket">
+                        </picture>
+
+                    </div>
+                    <div class="hero2">
+                        <h2>Lorem ipsum dolor</h2>
+            
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odit..Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, odit..</p>
+                    </div>
+                </div>
+            </a>                
+        </article>
+        
+        <!--SPOTS-->
+        <article class="spots"> <!--SPOTS 1-->
+            <div class="spots-container">
+                <div class="spots-container2">  
+                    <!--Click to the product and lead to the link-->                   
+                    <a href="http://localhost:5500/product-details.html"><img src="images/kitty.jpg" alt="kitty-pinkjacket"></a>
+                         <span>
+                            Lorem ipsum dolor
+                        </span>
+                </div>
+
+                <div class="spots-container2"> <!--SPOTS 2-->
+                    <a href="http://localhost:5500/product-details.html"><img src="images/kitty.jpg" alt="kitty-pinkjacket"></a>
+                         <span>
+                            Lorem ipsum dolor
+                        </span>
+                </div>
+
+                <div class="spots-container2"> <!--SPOTS 3-->
+                    <a href="http://localhost:5500/product-details.html">      
+                        <img src="images/kitty.jpg" alt="kitty-pinkjacket"></a>
+                         <span>
+                            Lorem ipsum dolor
+                        </span>
+                </div>
+            </div>    
+        </article>
+
+
+        <!--PRODUCTS-->   
+        <article class="products1">
+            <% products.forEach(product => { %> 
+                <div class="container">
+                    <!--link to produktkort--> 
+                    <a href="http://localhost:3000/products/black-dress"> 
+                    <div class="cloth-container">     
+                            <div class="blackdress-container">                            
+                                <img src="<%= product.image %>" alt="<%= product.name %>">
+                            </div>
+                        <!-- <span class="span0">
+                                <text class="nyhet-badge">Nyhet</text> 
+                            </span> -->
+                            <span class="span1">
+                                <img src="<%= product.favorit %>" alt="favorit"> <!--favorit icon-->
+                            </span> 
+                                <span class="product_name"><%= product.name %></span>
+                            <span class="span2">
+                                <%= product.price %> 
+                            </span>
+                            <br>
+                            <span class="span3"><%= product.brand %></span>
+                        </div>
+                    </a>
+                </div>
+            <% }); %>
+        </article>
+        
+        <!--ASIDE-->                   
+        <aside class="side-container">
+            <ul>
+                <li class="side-list">
+                    <img src="images/global.png" alt="global">
+                    <span class="side-list-text">Gratis frakt och returer</span>
+                </li> 
+                <li  class="side-list">
+                <img src="images/aircraft.png" alt="aircraft">
+                <span class="side-list-text">Expressfrakt</span>
+                </li> 
+                <li  class="side-list">
+                    <img src="images/safe.png" alt="safe">
+                    <span  class="side-list-text">Säkra betalningar</span>
+                </li> 
+                <li  class="side-list">
+                    <img src="images/smile.png" alt="smile">
+                    <span class="side-list-text">Nyheter varje dag</span>
+                </li>   
+            </ul>
+        </aside>
+
+
+        </main>
+            
+        <footer>
+
+            <!--Accordion Komponent-->
+            <div class="accordion">
+                <div class="accordion-item" >
+                    <button class="accordion-button">Shopping</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Vinterjackor</li>
+                            <li>Pufferjackor</li>
+                            <li>Kappa</li>
+                            <li>Trenchcoats</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" >MinaSidor</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Mina Ordrar</li>
+                            <li>Mitt Konto</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" >Kundtjänst</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Returpolicy</li>
+                            <li>Integritetspolicy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="freakyscript.js"></script>
+
+            <div class="copy">
+            <p><a href="aboutfreaky.html">&copy;Freaky Fashion</a></p>
+            </div>
+            <div class="back">
+            <a href="#">Back to Top</a>
+            </div>
+           <br>
+           <br> 
+        </footer>
+    </body>
 </html>

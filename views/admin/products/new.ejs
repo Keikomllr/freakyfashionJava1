@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Nya produkter" content="nya produkter">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Store icon-->
+  <link rel="icon" href="images/icon.png" type="image/storeicon">  
+  <link rel="stylesheet" href="/stylesheets/listproduktstyle.css">
+ 
+        <title>Administration Ny Produkt</title> 
+ 
+</head> 
+<body>
+  <div class="list-container"> <!--Container för whole page LAYOUT-->
+    <div class="item header">
+       <header>
+        <h1>Administration</h1>
+       </header>
+    </div>    
+  
+    <div class="item sidebar">
+        <aside><h3>Produkter</h3></aside>
+    </div>   
+     
+    <div class="item main"> 
+      <article id="nyaprodukter">
+        <h2>Ny produkt</h2>
+        
+        <form action="ny_produkt_form">   
+          <section>
+            <div class="namn">
+                <p><label for="namn" class="name">Namn</label>  <!--NAME-->
+                </p>
+                <input type="text" id="namn" name="namn" value="" placeholder="Ange Namn" autocomplete="on" required autofocus> 
+            </div>
+            
+            <div>
+                <p><label for="d_message">Beskrivning</label>  <!--COMMENT-->
+                </p>
+                <textarea name="message" id="d_message" cols="38" rows="10"></textarea>
+            </div> 
+
+            <div>
+              <p><label for="file-upload">Bild</label>  <!--PHOTO UPLOAD-->
+              </p>
+               <p> 
+              <input type="file" id="file-upload" name="photo"  
+              accept="image/*"> <!--choose file-->  
+              </p>
+            </div>
+            
+            <div>
+              <p><label for="text">SKU</label></p> <!--PRODUCTS CODE ALFABETS/NUMBERS-->
+              <p>
+                <input type="text" id="sku" name="sku">
+              </p>
+            </div>
+
+            <div>
+                <label for="amount">Pris</label> <!--PRICE-->
+                <p>
+                <input type="number" id="amount" name="amount" min="0" step="1"> <!--Price. Only number accepted. >0.-->
+                </p>
+            </div>
+          </section>
+
+          <section class="kategorier">  <!--CATEGORY- can choose more than one-->
+            <h4><legend>Kategorier</legend></h4>
+            <p>
+              <input type="checkbox" name="kategorier" id="tshirts" value="tshirts">
+              <label for="tshirts" class="kategorier">T-shirts</label>
+            </p>
+            <p>
+              <input type="checkbox" name="kategorier" id="sommar" value="sommar">
+              <label for="sommar" class="kategorier">Sommar</label>
+            </p>
+            <p>
+              <input type="checkbox" name="kategorier" id="byxor" value="byxor">
+              <label for="byxor" class="kategorier">Byxor</label>
+            </p>
+            <p>
+              <input type="checkbox" name="kategorier" id="skor" value="skor">
+              <label for="skor" class="kategorier">Skor</label>
+            </p>
+          </section>
+
+        <br>
+          <div class="submit-btn">  <!--SUBMIT-->
+            <input type="submit" name="btn_confirm" value="Lägg till" class="button-6">
+          </div>  
+      </form>
+    </article> 
+  </div>  
+      
+  <div class="item footer">
+        <footer>
+    
+        </footer>  
+  </div>
+          
+  </div>
+  
+</body> 
+</html> 

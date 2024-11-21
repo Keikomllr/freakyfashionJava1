@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Freaky fashion, Product details, stylish outfits, fashion, unique clothing"> <!-- keywords for search engine--> 
+    <title><%= title %></title>
+    <link rel="icon" href="/images/black-cat (1).png" type="image/storeicon">  <!--Store icon-->
+    <link rel="stylesheet" a href="/stylesheets/style.css"> <!--link to Stylesheet-->
+</head>
+<body>
+
+    <header>
+        <div class="head-container">
+             <div class="headitem-1">  
+                 <img src="/images/logotype.jpg"  alt="logotype"> <!--LOGOTYPE-->
+             </div>
+
+             <div class="head-container2">
+                 <div class="headitem-2"> <!--search products from here-->
+                     <input type="search" placeholder="Sök produkt">            
+                 </div>
+                 <div class="headitem-3"> <!--favorite icon top-->
+                     <a href="http://localhost:5500/favorit/" target="_blank"><img src="/images/heartblack.png" alt="favorit_icon"></a>
+                     <!--Open the link with a new tab-->
+                 </div>
+                 <div class="headitem-4"> <!--shopping icon-->
+                     <a href="http://localhost:5500/shopping/" target="_blank"><img src="/images/shoppingbag.png" alt="shopping_icon"></a>
+                 </div>    
+             </div>
+        </div> 
+ 
+         <nav aria-rabel="primary-navigation">                      <!--navigater-->            
+              <ul>
+                 <li>
+                     <a href="#news">Nyheter</a>
+                 </li>
+                 <li>
+                     <a href="#toplist">Topplistan</a>
+                 </li>
+                 <li>
+                     <a href="#sale">Rea</a>
+                 </li>
+                 <li>
+                     <a href="#campain">Kampanjer</a>
+                 </li>
+             </ul>
+         </nav>   
+     </header>
+ 
+   
+    <main>
+
+        <section id="customer-service">  
+            <img src="/images/chat.png" alt="chat"> <!--Chat icon-->
+        </section>
+        
+        <!--PRODUCT DETAILS--> 
+        <article class="product_detail">
+           <div class="detail_container">  
+                <div class="detail_pic">
+                    <a href="#order"> <!--Lead to link-->   
+                        <div class="blackdress-container">
+                            <!--img changes by placing the mouse over the image-->    
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                            
+                        </div>       
+                    </a>    
+                </div>
+
+                <div class="detail_text">  
+                    <h2><%= product.name %></h2>
+             
+                    <span class="levis"><%= product.brand %></span>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum itaque corporis quod soluta maiores? Iste quibusdam atque fuga. </p>
+                    
+                    <p class="detail_price">
+                        <%= product.price %></p>
+
+                    <input type="submit" name="btn_confirm" value="Lägg i varukorg" class="button-28">  
+                </div>   
+            </div>
+        </article>     
+        
+
+        <!--Liknande produkter-->
+        <article class="similar">
+            <h3>Liknande produkter</h3>
+           <div class="similar_container">
+
+                     <!--SIMILAR PRODUCTs--> 
+               <% selectedProducts.forEach(selectedProduct => { %>
+                    <a href="http://localhost:3000/products/<%= selectedProduct.urlSlug %>">
+                        <div class="similar_product">                   
+                            <img
+                            src="<%= selectedProduct.image %>"
+                            alt="<%= selectedProduct.name %>"/>                   
+                            <span class="span1_s"><%= selectedProduct.name %></span>
+                            <span class="span2_s"><%= selectedProduct.price %></span>
+                            <br>
+                            <span class="span3_s"><%= selectedProduct.brand %></span>
+                        </div>
+                    </a> 
+                <% }) %>   
+             </div>            
+        </article>
+        
+         <!--ASIDE-->
+        <aside class="side-container">
+            <ul>
+                <li class="side-list">
+                    <img src="/images/global.png" alt="global">
+                    <span class="side-list-text">Gratis frakt och returer</span>
+                </li> 
+                <li  class="side-list">
+                <img src="/images/aircraft.png" alt="aircraft">
+                <span class="side-list-text">Expressfrakt</span>
+                </li> 
+                <li  class="side-list">
+                    <img src="/images/safe.png" alt="safe">
+                    <span  class="side-list-text">Säkra betalningar</span>
+                </li> 
+                <li  class="side-list">
+                    <img src="/images/smile.png" alt="smile">
+                    <span class="side-list-text">Nyheter varje dag</span>
+                </li>   
+            </ul>
+        </aside>
+
+     </main>
+            
+            <footer>
+
+                <!--Accordion Komponent-->
+                <div class="accordion">
+
+                   <!--ACCORDION 1-->  
+                  <div class="accordion-item">
+                      <button class="accordion-button">Shopping</button>
+                      <div class="accordion-content">
+                          <ul>
+                              <li>Vinterjackor</li>
+                              <li>Pufferjackor</li>
+                              <li>Kappa</li>
+                              <li>Trenchcoats</li>
+                            </ul>
+                      </div>
+                  </div>
+
+                   <!--ACCORDION 2-->  
+                  <div class="accordion-item">
+                      <button class="accordion-button">MinaSidor</button>
+                      <div class="accordion-content">
+                          <ul>
+                              <li>Mina Ordrar</li>
+                              <li>Mitt Konto</li>
+                            </ul>
+                      </div>
+                  </div>
+
+                   <!--ACCORDION 3-->  
+                  <div class="accordion-item">
+                      <button class="accordion-button">Kundtjänst</button>
+                      <div class="accordion-content">
+                          <ul>
+                              <li>Returpolicy</li>
+                              <li>Integritetspolicy</li>
+                            </ul>
+                      </div>
+                  </div>
+              </div>
+              <script src="freakyscript.js"></script>
+
+
+              <div class="copy"> <!--COPY RIGHT. link to #about-->
+                <p><a href="#about">&copy;Freaky Fashion</a></p>
+              </div>
+              <div class="back"><!--Go back to TOP-->
+                <a href="#">Back to Top</a>
+              </div>
+              <br>
+              <br>
+            </footer>
+        </body>
+</html>

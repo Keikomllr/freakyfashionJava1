@@ -1,8 +1,616 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+header {
+    /*background-color: guradietion*/
+    background-image: linear-gradient(antiquewhite, #f6fdff);
+    padding: 20px;
+    padding-bottom: 5px;
 }
 
-a {
-  color: #00B7FF;
+
+body{
+    font-size: 1.2rem;
+    margin:0px;
+    font-family: cursive;
+    width: 100%;
+    background-color: whitesmoke;
 }
+
+a{   /*styles to link*/
+    display:block;  /*block makes whole container as link*/
+    text-decoration: none;  /*Remove  underline for text*/
+    color: inherit;   /*make blue text color to original color */
+}
+a:hover{   /*hover to all link*/
+    transform: scale(1.013);
+    transition-property: transform;
+    transition:0.2s;
+}
+
+.span0:hover{  /*Nyhet badge*/
+    transform: scale(1.2);
+}
+.span1:hover{  /*filled heart*/
+    transform: scale(1.3);
+}
+
+.headitem-1 > img {     /*Logotype*/
+    width: 100%;
+}
+ .headitem-3:hover{ /* empty heart icon*/
+    transform: scale(1.5);
+    transition-property: transform;
+    transition:0.5s;
+ }
+ 
+ .headitem-4:hover{ /*shopping icon*/   
+    transform: scale(1.5);
+    transition-property: transform;
+    transition:0.5s;
+ }
+
+.head-container{ 
+    /*header changes the layout by screen size*/
+    display:flex;
+    flex-grow: 1;
+    flex-flow: row wrap;
+         div {
+             margin: 15px;
+            }
+}
+.head-container2{
+    /*Position for the search and other icons*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position:relative;
+}
+.headitem-3{  /*Position for header- favorite icon */
+    position:absolute;
+    right:40px;
+}
+.headitem-4{   /*Position for header- shopping icon*/
+    position:absolute;
+    right:0px;
+}
+
+ul  
+{ 
+  /*Remove the dots for the list*/
+    list-style: none;
+}
+
+/*HOVER for NAV*/
+nav a{ 
+    text-decoration: none;
+    color: rgb(36, 36, 65);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+nav a:hover{
+    color:rgb(4, 158, 107);
+}
+
+li:hover{
+    /*HOVER for FOOTER LIST */
+    color: rgb(226, 123, 5);
+    transform:scale(1.05);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transform-origin: left; /*expand to right*/
+}
+aside li:hover{
+    /*HOVER for ASIDE */
+    color:rgb(121, 181, 235);
+}
+.accordion-button:hover{
+    background-color: rgb(110, 0, 0);
+    color:#ccc;
+    transform:scale(1.1);
+}
+
+.side-list{    /*Changing the text position för ASIDE*/
+    position:relative;
+}
+.side-list-text{ 
+    position:absolute;
+    bottom:23px;
+    left: 60px;
+}
+
+#customer-service{
+  /* Fäster elementet inom viewport*/
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;   /*To make first front picture*/
+}
+
+#customer-service:hover{  /*HOVER for CUSTOMER SERVICE*/
+    transform: scale(1.4); /*EXPAND SIZE*/
+    transition-property: transform;
+    transition-duration: 0.5s; /*SPEED*/
+}
+
+/* ----SALE ANIMATION-----*/
+.sale-text2{
+    text-decoration: underline; /*underline to the Link*/
+}
+.sale_container  
+{
+    width:100%; /*Decide the size of container*/
+    height: 60px;
+    position: relative;
+    background-color: #b61c1c;
+    color:white;
+    font-family:'Times New Roman', Times, serif;
+    padding: 20px;
+    text-align: center;
+    
+    animation: expandWidth 2s forwards; /*ANIMATION TYTE, SPEED, DIRECTION*/    
+}
+
+@keyframes expandWidth { /*EXPAND 0 TO 100%*/
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100;
+    }
+}
+
+/*---SPOTS--*/
+.spots-container{
+    margin:20px;
+    padding: 10px;
+    align-items: center;
+    background-color: aliceblue;
+   
+    display:flex;  /*spots layout-FLEX-ROW*/
+    flex-direction: row;
+    img{
+        width: 100%;
+    }
+}
+.spots-container2{  /*TEXT FOR SPOTS*/
+    position: relative; /*POSITION RELATIVE TO PHOTO*/
+}
+.spots-container2 > span{  
+    position: absolute;   /*POSITION ABSOLUTE TO TEXT*/
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.4rem;
+    text-align: center;
+    left: 50%;      /*MAKE TO TEXT CENTER*/
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero{
+    padding: 10px;  
+}
+
+.hero-container{
+    margin:20px;
+    padding-top: 20px;
+    padding: 10px;
+    background-color: aliceblue;
+    display:block;
+    text-align: center; 
+    img{
+        width:100%;
+    }
+    div{
+        padding: 10px;
+    }
+}
+.spots-container{   
+    padding:10px;
+    div{
+        width: 100%;
+       padding: 10px;
+  }
+}
+.products1 {
+    margin:20px;
+    background-color: aliceblue;
+    display: block;
+    padding:20px;
+    img{
+        margin-top:10px;
+        width: 100%;
+    }
+}
+.container {
+    margin-bottom: 10px;
+    display: block;
+     gap: 15px;
+ }
+
+/*-----BLACK DRESS CHANGE IMG BY MOUSE------*/
+.blackdress-container{ 
+    position: relative;
+    width: 100%;     /*Set the parent element width to 100%*/
+    max-width: 800px;   /*max size*/
+    min-width: 200px;
+    height: auto;      /*Automatically changes by width*/
+    aspect-ratio: 2/ 3;   /*For not to distroy the img shape*/
+    margin:10px;        
+    }
+.default-blackdress, .hover-blackdress{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease; /**/
+    object-fit: cover; /*Make img fits in parents element and follow the aspect ratio*/
+}
+
+.default-blackdress{ 
+    opacity: 1;  /*Img 1: Visible*/
+}
+
+.hover-blackdress{
+    opacity:0;   /*Img 2: Invisible*/
+}
+
+/*--- CHANGE VISIBLE SETTING----*/
+.blackdress-container:hover .default-blackdress{ /*BY MOUSE (Hover) Img 1: Invisible.*/
+    opacity:0;   
+}
+
+.blackdress-container:hover .hover-blackdress{  /*BY MOUSE (Hover) Img 2: Visible*/
+    opacity: 1;
+}
+
+
+ /*Nyhet badge*/
+.nyhet-badge{
+    background-color: #000204; /* Badge color */
+    color: white;              /* Text color */
+    padding: 8px 17px;       /* Padding for spacing */
+    border-radius: 30px;      /* Creates the oval shape */
+    font-size: 15px;          /* Font size */
+    text-align: center;        /* Center text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*  Shadow */
+}
+/*Position for clothes*/
+.cloth-container{
+    position: relative /*To be able to change products captions layout*/
+   }
+
+.cloth-container > span{    /*To be able to change products captions layout*/
+    position: absolute; 
+}
+
+.cloth-container > .span0{ /*Nyhet position*/
+    left: 20px;
+    top: 20px; 
+}
+
+.cloth-container > .span1{ /*heart position*/
+    right: 20px;
+    bottom: 60px; 
+}
+.cloth-container > .product_name{
+    bottom: 15px;
+}
+.cloth-container > .span2 { /*price position, size*/
+    right: 0px;
+    font-size: x-small;
+    bottom: 15px;
+    
+}
+
+.cloth-container > .span3{ /*brand size, position*/
+    font-size: xx-small;
+    bottom: 5px;
+}
+
+
+/*-----ASIDE------------*/
+.side-container > ul {
+    display:grid;
+}
+aside{
+    padding-bottom: 10px;
+}
+aside li{
+    padding:10px;
+}
+aside img{
+    width:40px;
+}
+
+.copy{  /*Copy right center*/
+    text-align: center;
+}
+.back{  /*back to top center*/
+    text-align: center;
+}
+ 
+
+
+/*-------------ACCORDION---------------*/
+.accordion {
+    width: 100%;
+    margin: auto;
+    text-align: start;
+    display:grid;
+}
+
+.accordion-item { /*Space between the list*/
+    margin-bottom: 5px;
+}
+
+.accordion-button {  /*style*/
+    font-size: 1.2rem;
+    font-family: cursive;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+}
+.accordion-button:hover{  /*Hover*/
+    transform: scale(1.1);
+    transition-property:transform;
+    transition-duration:0.5s;
+    transform-origin: left; /*expand to right*/
+}
+.accordion-content { /*accordion display off*/
+    display: none;
+    padding: 15px;
+   }
+
+   .accordion-item.active .accordion-content {
+    /*Accordion list can open*/
+    display: block;
+}
+
+ /*RESPONSIVE */   
+@media (max-width:640px){  /*--MEDIA QUERI--Screen for less than 640px*/
+    .similar{
+    display:none;  /*Similar products display off*/
+   }
+}
+/*RESPONSIVE */
+@media (min-width: 640px) {  /*--MEDIA QUERI--Screen size for more than 640px*/
+    .accordion-head {
+        pointer-events: none;   /* keep open the accordion and disable the button */
+    }
+   
+    .accordion-item .accordion-content {
+        display: block; /*Accordion list opened*/
+    }
+    .accordion-item:hover{ 
+        transform-origin: center;/*expand center*/
+    }
+    .accordion-button:hover{ /*remove the button hover*/
+        transform: none;
+        background-color: lightgray;
+        color:#000204;
+    }
+    .accordion-button{ /*change the button to non style*/
+        font-weight: 700;
+        padding-top: 20px;
+        padding-left: 50px;
+        background-color: lightgray;
+        border:none;
+    }
+    .accordion-content{
+        padding-top: 0px;
+        li{
+            padding-bottom:10px;
+        }
+    }
+    
+    .accordion{  /*Accordion layoout to be wide*/
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    body{ /* Font size become smaller(normal) size for bigger device*/
+        font-size: 1rem;
+    }
+    
+    .headitem-1 > img {  /*Logo size*/ 
+        max-width: 400px;
+    }
+    nav li:hover{/* Menu bar expand to center*/
+        transform-origin: center;
+    }
+   
+    .head-container {  /*header*/  
+        padding: 10px;
+       flex-direction: row;  /*layout for wide screen*/
+       flex-wrap: nowrap;
+       justify-content: flex-start;
+       align-items: center; 
+       flex-grow: 1;      /*fit to screen size*/
+    }
+
+
+    .side-container > ul{      /*Aside 2 item per column*/
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /*.products1 > div {  /*Prducts 2 items per colum
+        grid-template-columns: repeat(2, 1fr);
+    }*/
+    .products1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);  /* Prducts 2 items per colum */
+        gap: 16px;  
+        padding: 16px;  
+    }
+
+   nav > ul {   /*Navigation fit to wide screen*/
+    display: flex;   
+    flex-direction: row;
+    justify-items: flex-start;   
+    li{
+        padding: 15px;
+        }
+    }
+    footer {   /*Footer background none to light gray*/
+        background-color: lightgray;
+    } 
+}
+
+
+
+/*RESPONSIVE DESIGN*/
+@media (min-width: 1024px){   /*--MEDIA QUERI--Screen is more than 1024px*/
+    .products1  { 
+        display: grid;  
+        grid-template-columns: repeat(4, 1fr);  /*products become 4 items per column*/
+       
+    }
+
+    .hero-container{  /*hero changes layout to wider*/
+        display:flex;
+        flex-direction: row-reverse;  /*img to right*/   
+    }
+    .hero-container > :nth-child(1){ /*img getting bigger, adjust to the screen size*/
+        width: 100%;
+    }
+
+    .side-container > ul {  /*Aside change to 1 row*/
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+@media (max-width: 1024px){ /*--MEDIA QUERI--Screen is less than 1024px*/
+    .spots{    /*Spots No display*/
+        display:none;
+    }
+}
+
+
+
+/*----PRODUCT DETAILS-----*/
+.detail_text{padding:20px;}
+.detail_container{
+    margin:10px;
+    padding: 20px;
+    
+    img{
+        width: 100%;
+    }  
+}
+
+
+
+.detail_heart{
+    width: 30px;
+    position:absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.levis{
+    font-size: smaller;
+}
+
+
+/*---SIMILAR PRODUCTS---*/
+
+.similar h3{
+    text-align: center;
+}
+.similar_container{ 
+        display:grid;  /*GRID*/
+        grid-template-columns: repeat(3, 1fr); /*1 ROW 3PICS*/
+        padding: 10px; 
+        img{width: 100%;}
+}
+
+/*Position (Layout) for clothes*/
+.similar_product {
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    position: relative;
+         
+}
+
+.similar_product > .span2_s { /*price*/
+    position: absolute; 
+   right: 12px;
+   bottom: 20px;
+    font-size: x-small;
+}
+
+.similar_product > .span3_s { /*Levis*/
+    font-size: xx-small;
+}
+
+
+/*RESPONSIV DESIGN--MEDIAQUERI--*/
+@media(min-width:640px){ /*MORE THAN 640PX*/
+    .detail_container {        
+        display:flex;    /*wider layout*/
+        flex-direction: row;  
+        padding:30px;     
+    }
+    .detail_pic{
+        min-width: 400px; /*Dont get smaller than 400px*/
+    }
+    .detail_text{
+        max-width: 600px; /*Dont get bigger than 600px*/
+    }
+}
+@media(min-width:1024px){   /*MORE THAN 1024PX*/
+    /*Detail product fitting to the screen size*/
+    .detail_container > div{
+        flex-grow: 1;
+        padding:20px;
+    }
+}
+
+
+
+ /*--Copied button style by Fondation. "https://getcssscan.com/css-buttons-examples"--*/ 
+ .button-28 {
+    width: 80%;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 40px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    will-change: transform;
+  }
+  
+  .button-28:disabled {
+    pointer-events: none;
+  }
+  
+  .button-28:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .button-28:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  /*--button style end--*/

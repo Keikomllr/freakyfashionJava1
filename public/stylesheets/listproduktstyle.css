@@ -1,0 +1,159 @@
+body {
+    font-family: cursive;    /*font style*/
+    font-weight: 700; 
+    min-height: 100vh;      /*viewport(screen size) 100%*/
+    display: grid;
+    }     
+.kategorier{
+    font-weight: 100;
+}
+
+    /*Layout*/
+    .list-container {
+        display: grid; /*LAYOUT for whole page*/
+        grid-template:
+        "head head" 100px  /*row size*/
+        "side main" 1fr 
+        "foot foot" 10px
+        / 120px 1fr; /*column size*/
+    }
+    
+    .header {
+        grid-area: head; /*Grid Area name for layout page*/
+
+        background-color: black;
+        color: white;
+        padding: 10px;
+    }
+
+    .sidebar {
+        grid-area: side; /*Grid Area name*/
+        padding: 15px;
+        background-color: lightgray;
+    }
+    
+    .main {
+        grid-area: main; /*Grid Area name*/
+        position:relative; /*for ny produkt button*/
+    }
+    .name{
+        padding-bottom: 5px;
+    }
+      
+    .nyprodukt-btn{ /*position for button*/
+        position:absolute;
+        right: 20px;
+        top: 25px;
+    }
+    .nyprodukt-btn:hover{ /*button expand*/
+        transform: scale(1.1);
+        transition: 0.2s;
+    }
+    .submit-btn:hover{ /*button expand*/
+        transform: scale(1.1);
+        transition: transform;
+        transform-origin: left;
+    }
+    .footer {
+        grid-area: foot;
+        background-color: black;
+    }
+.item{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.main{
+    max-width: 900px; /*To make table not too wide*/
+    border:none; /*To remove the right line*/
+} 
+
+  /*Product List*/
+    th,td{
+        border: solid 2px; /*Normal border line*/
+        padding: 5px 10px;/*hight x width inside the cell */
+        text-align: left;
+    }
+    table{ 
+        border-collapse: collapse; /*cell line integrated*/
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        width: 100%; 
+    }
+    tr:first-child{ /*Top row color*/
+        background-color: rgb(168, 168, 168);
+    }
+    tr:nth-child(even){ /*Color for 2nd and 4th row*/
+        background-color: #efeded;
+    }
+    td,th{              
+        /*Remove table data and table heads top&bottom line*/
+        border-bottom: none;
+        border-top: none;
+    }
+    th{  /*Keep the table head top line of the table*/
+        border-top: solid 2px;
+    }
+
+    tr:last-child td{  
+        /*Keep the bottom line of the table by choosing last row*/
+        border-bottom:solid 2px;
+    }
+  
+
+  #nyaprodukter{
+    margin :30px;
+  }
+ 
+  .namn{
+    margin-bottom: 10px;       
+  }
+
+  
+  /*button style by Sketch"https://getcssscan.com/css-buttons-examples"*/ 
+  .button-6 {
+    align-items: center;
+    background-color: #ebebeb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.75rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-6:hover,
+  .button-6:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  
+  .button-6:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-6:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+    
