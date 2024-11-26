@@ -30,13 +30,15 @@
         <main class="item main"> <!--MAIN-->                        
             
             <h2><%= title %></h2>
-            <div id="loadProducts" class="laddaProdukter-btn">
-                <input type="submit" name="btn_confirm" value="Ladda produkter" class="button-6" with="80%">                  
+            <div class="laddaProdukter-btn">
+                <button id="loadProducts" class="button-6">Ladda produkter</button>           
             </div>
             
                 <!--Lead to new product page-->
                 <div class="nyprodukt-btn">
-                    <a href="/admin/products/new"><input type="submit" name="btn_confirm" value="Ny produkt" class="button-6"></a>                  
+                    <a href="/admin/products/new">
+                        <input type="submit" name="btn_confirm" value="Ny produkt" class="button-6">
+                    </a>                  
                 </div>
 
             <!-----PRODUCT TABLE----->
@@ -56,7 +58,7 @@
              </table>
 
              <!-- 外部JavaScriptファイルを読み込み -->
-             <script src="/js/newPrducts.js"></script>
+             <script src="/js/newProducts.js" defer></script>
              
         </main>
         

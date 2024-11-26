@@ -1,23 +1,28 @@
 document.getElementById('loadProducts').addEventListener('click', () => {
-    fetch('/admin/products') // サーバーから商品を取得
-        .then(response => response.json())
+    fetch('/admin/api/products') // サーバーから商品を取得
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTPエラー: ${response.status}`);
+        }
+        return response.json();
+    })
         .then(data => {
             const newProductTable = document.getElementById('newProductTableBody');
             newProductTable.innerHTML = ''; // テーブルの内容をリセット
             
-            data.forEach(newProduct => {
+            data.forEach(post => {
                 // 新しい<tr>を作成
                 const row = document.createElement('tr');
 
                 // <td>を作成して値を設定
                 const nameCell = document.createElement('td');
-                nameCell.textContent = newProduct.namn;
+                nameCell.textContent = post.namn;
 
                 const skuCell = document.createElement('td');
-                skuCell.textContent = newProduct.sku;
+                skuCell.textContent = post.sku;
 
                 const amountCell = document.createElement('td');
-                amountCell.textContent = newProduct.amount;
+                amountCell.textContent = post.amount;
 
                 // <tr>に<td>を追加
                 row.appendChild(nameCell);

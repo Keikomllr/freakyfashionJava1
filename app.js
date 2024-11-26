@@ -50,49 +50,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-/*app.get('/admin/products/new', function(req, res){
-  res.render('admin/products/new');
-});
-app.post('/admin/products/new', function (request, response){
-//request-objektet innehåller information gällande
-//anropet som gjorts av klienten, däribland
-//eventuell data som klienten har skickat
-const post = {
-  id: request.body.id, 
-  namn: request.body.namn, 
-  d_message: request.body.d_message, 
-  photo: request.body.photo,
-  sku: request.body.sku,
-  amount: request.body.amount
-};
-
-//Lagra info i databasen
-
-//förbereder SQL-kommandot som ska köras(kör inte nu)
-const insert = db.prepare(`
-  INSERT INTO posts(
-  id,
-  namn,
-  d_message,
-  photo,
-  sku,
-  amount
-) VALUES (
-  @id,
-  @namn,
-  @d_message,
-  @photo,
-  @sku,
-  @amount
-)
-  `);
-  
-  insert.run(post);
-
-  //Säg till klienten att gå till admin/products,
-  //vilket alltså innebär att sidan laddas om i detta fallet
-  response.redirect("/admin/products");
-});
-*/
 
 module.exports = app;

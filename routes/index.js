@@ -12,14 +12,10 @@ const db = new Database('./db/admin.db', {
 
 
 
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Freaky Fasion', products: products });
 });
-
-
 
 
 // ----SHUFFLE FUNCTION----
@@ -60,21 +56,24 @@ router.get('/products/:urlSlug', (req, res) => {
 
 //--------ADMIN------------
 
-
-// `/admin/products` 商品一覧表示
-router.get('/admin/products', (req, res) => {
-  try {
-    const select = db.prepare(`
-      SELECT id, namn, d_message, photo, sku, amount
+// JSONを返すエンドポイント
+router.get('/admin/api/products', (req, res) => {
+  const select = db.prepare(`
+      SELECT namn, sku, amount
       FROM posts
-    `);
-    const newProducts = select.all(); // 全商品のデータを取得
-    res.render('admin/products', { title: 'produkter', newProducts });
-  } catch (error) {
-    console.error('エラー:', error.message);
-    res.status(500).send('商品一覧の取得中にエラーが発生しました');
-  }
+  `);
+  const newProducts = select.all();
+  res.json(newProducts); // JSONを返す
 });
+
+// HTMLを返すエンドポイント
+router.get('/admin/products', (req, res) => {
+  res.render('admin/products', { title: 'Produkter' }); // HTMLを返す
+});
+
+
+
+//---ADMIN/PRODUCTS/NEW----
 
 // `/admin/products/new` 新商品の追加フォーム表示
 router.get('/admin/products/new', (req, res) => {
@@ -106,46 +105,6 @@ router.post('/admin/products/new', (req, res) => {
   }
 });
 
-
-/*Rendaring to PRODUCTS (admin/products) page. 
-router.get('/admin/products', function(req, res, next) {
- */  
-   /*try { 
-    // TODO: Lägg till ny product
-    const select = db.prepare(`
-      SELECT id,
-             namn,
-             d_message,
-             photo,
-             sku,
-             amount  
-        FROM posts
-    `);
-  
-    // Kör SQL SELECT
-    const rows = select.all();
-    //res.json(rows); // JSON形式で返す
-  
-    res.render('admin/products', { 
-      title: 'Ny product',
-      posts: rows 
-    });
-
-  } catch (error) {
-    console.error('データベースエラー:', error.message);
-    res.status(500).send('内部エラーが発生しました');
-  }
-}); 
-*/
-
-
-
-/*Rendaring to NEW (admin/products/new) page. 
-router.get('/admin/products/new', function(req, res, next) {
-  
-  res.render('admin/products/new', {title: 'Admin' });
-});
-*/
 
 
 module.exports = router;

@@ -40,6 +40,19 @@ body {
         padding-bottom: 5px;
     }
 
+
+
+/*RESPONSIVE for buttons */   
+@media (max-width:640px){
+    .item > div{
+    width: 120%;
+    display:block;
+    margin-bottom: 20px;
+    }
+}
+
+/*RESPONSIVE for buttons */   
+@media (min-width:640px){
     .laddaProdukter-btn{ /*position for laddar-produkter button*/
         position:absolute;
         right: 200px;
@@ -50,16 +63,18 @@ body {
         right: 20px;
         top: 25px;
     }
-   
-    .submit-btn:hover{ /*button expand*/
+}   
+
+    
+.submit-btn:hover{ /*button expand*/
         transform: scale(1.1);
         transition: transform;
         transform-origin: left;
-    }
-    .footer {
+}
+.footer {
         grid-area: foot;
         background-color: black;
-    }
+}
 .item{
     border: 1px solid black;
     padding: 10px;
