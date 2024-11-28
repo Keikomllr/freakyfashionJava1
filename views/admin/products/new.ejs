@@ -61,9 +61,9 @@
             </div>
 
             <div>
-                <label for="amount">Pris</label> <!--PRICE-->
+                <label for="pris">Pris</label> <!--PRICE-->
                 <p>
-                <input type="number" id="amount" name="amount" min="0" step="1" required> <!--Price. Only number accepted. >0.-->
+                  <input type="text" id="pris" name="pris" min="0" step="1" required> <!--Price. Only number accepted. >0.-->
                 </p>
             </div>
           </section>
@@ -78,7 +78,35 @@
     </article>
   </form> 
   </div>  
-      
+
+  <script>
+    const form = document.getElementById('nyaprodukter');
+
+    form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const newProduct = {
+      namn: formData.get("namn"),
+      sku: formData.get("sku"),
+      pris: formData.get("pris"),
+    };
+
+    fetch('/admin/products/new', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newProduct)
+      }).then(() => {
+        location.href = "/admin/products";
+      });
+
+    });
+
+  </script>
+  
   <div class="item footer">
         <footer>
     

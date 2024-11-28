@@ -57,17 +57,32 @@ router.get('/products/:urlSlug', (req, res) => {
 //--------ADMIN------------
 
 // JSONを返すエンドポイント
-router.get('/admin/api/products', (req, res) => {
+// Web API endpoint för att hämta ut fordon som JSON
+// GET /api/vehicles
+router.get('/admin/api/products', function(req, res) {
+
+  // Förbered anrop mot db
   const select = db.prepare(`
-      SELECT namn, sku, amount
-      FROM posts
+      SELECT  namn, 
+              sku, 
+              pris
+      FROM    newProducts
   `);
-  const newProducts = select.all();
-  res.json(newProducts); // JSONを返す
+
+  // Gör anrop mot db - rows kommer vara en array.
+  // Arrayn är tom om det inte finns några rader, annars
+  // innehåller den objekt där varje objekt representerar
+  // en rad i tabellen.
+  const rows = select.all();
+
+  // Konvererat arrayn (objekt) som skickas in, till en JSON-sträng
+  res.json(rows); // JSONを返す
 });
 
+
+
 // HTMLを返すエンドポイント
-router.get('/admin/products', (req, res) => {
+router.get('/admin/products', function(req, res) {
   res.render('admin/products', { title: 'Produkter' }); // HTMLを返す
 });
 
@@ -76,29 +91,61 @@ router.get('/admin/products', (req, res) => {
 //---ADMIN/PRODUCTS/NEW----
 
 // `/admin/products/new` 新商品の追加フォーム表示
-router.get('/admin/products/new', (req, res) => {
+router.get('/admin/products/new', function(req, res) {
+
+  //Returnara HTML
   res.render('admin/products/new', { title: 'Ny produkt' });
 });
 
-// `/admin/products/new` 新商品の追加処理
-router.post('/admin/products/new', (req, res) => {
+// POST `/admin/products/new` 新商品の追加処理
+router.post('/admin/products/new', function(req, res)  {
   try {
-    const insert = db.prepare(`
-      INSERT INTO posts (namn, d_message, photo, sku, amount)
-      VALUES (@namn, @d_message, @photo, @sku, @amount)
-    `);
+    // Komma åt informationen som skickades till backend
+  
+    // FRÅGA: Hur kan jag komma åt informationen som skickats från 
+    // frontend?
+    // Content-Type: application/x-www-form-urlencoded
+    // name=dress&sku=xxx11&pris=199
+
+    // Content-Type: application/json
+    // {"namn":"dress","sku":"xxx11","pris:"199"} 
+
+    
 
     // フォームデータをデータベースに保存
-    const result = insert.run({
+    const newProduct = {
       namn: req.body.namn,
       d_message: req.body.d_message,
       photo: req.body.photo,
       sku: req.body.sku,
-      amount: req.body.amount,
-    });
+      pris: req.body.pris,
+    };
 
-    console.log('Added a new product:', result);
+    // Via egenskapen "body" på request-objektet (req)
+    const insert = db.prepare(`
+      INSERT INTO newProducts (
+      namn, 
+      d_message, 
+      photo, 
+      sku, 
+      pris
+      ) VALUES (
+       @namn, 
+       @d_message, 
+       @photo, 
+       @sku, 
+       @pris
+       )
+    `);
+
+    // Kör SQL
+    insert.run(newProduct);
+
+    //console.log('Added a new product:', result);
+
     res.redirect('/admin/products'); // リストページにリダイレクト
+  
+  
   } catch (error) {
     console.error('エラー:', error.message);
     res.status(500).send('商品追加中にエラーが発生しました');

@@ -34,6 +34,19 @@ app.use(express.static('public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
+
+
+// Kommer hantera alla inkommande förfrågningar (GET, POST, PUT, DELETE, etc.)
+// till en resurs som har en URL som börjar med "/admin".
+//app.use('/admin', adminRouter);
+
+
+
+
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -57,8 +57,52 @@
                 </tbody>
              </table>
 
-             <!-- 外部JavaScriptファイルを読み込み -->
-             <script src="/js/newProducts.js" defer></script>
+             
+             <script>
+                   // Hämta data från backend (JSON)
+                const tbody = document.querySelector("tbody");
+
+                    // Vi använder fetch() för att göra HTTP-anrop
+                    // Som standard görs ett GET-anrop, men vi kan ändra
+                    // detta till vilken HTTP-metod som helst (GET, POST, PUT, PATCH, DELETE, ...)
+
+                    // När operationen är klar - i detta fallet, när vi
+                    // fått svar från backend eller timeout.               
+                fetch("/admin/api/products")
+                .then((resp) => resp.json())
+                  .then((newProducts) => {
+                    
+                    for (let newProduct of newProducts) {
+                        const tr = document.createElement("tr");
+                         // 各データに対応するセル(td)を作成
+                            const nameTd = document.createElement("td");
+                            nameTd.innerText = newProduct.namn;
+
+                            const skuTd = document.createElement("td");
+                            skuTd.innerText = newProduct.sku;
+
+                            const priceTd = document.createElement("td");
+                            priceTd.innerText = newProduct.pris;
+
+                            // trに各tdを追加
+                            tr.appendChild(nameTd);
+                            tr.appendChild(skuTd);
+                            tr.appendChild(priceTd);
+
+                            
+                        /*const td = document.createElement("td");
+                        td.innerText = `${post.namn}, ${post.sku}, ${post.amount}`;
+                        tr.appendChild(td.innerText);*/
+                         
+                         
+                         // tbodyにtrを追加
+                        tbody.appendChild(tr);
+                    }
+                })
+                .catch((error) => console.error("データ取得エラー:", error));
+                    // Med denna data, skapa upp LI-element och lägg till
+                    // dessa till UL-elementet på sidan
+             </script>
              
         </main>
         

@@ -1,8 +1,23 @@
-CREATE TABLE IF NOT EXISTS posts (
+DROP TABLE newProducts;
+
+CREATE TABLE newProducts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  namn TEXT NOT NULL,
-  d_message TEXT NOT NULL,
+  namn TEXT,
+  d_message TEXT,
   photo TEXT,
-  sku TEXT NOT NULL,
-  amount INTEGER NOT NULL
+  sku TEXT,
+  pris TEXT
 );
+
+INSERT INTO newProducts (
+  namn,
+  d_message,
+  photo,
+  sku,
+  pris
+  )VALUES (
+    'Svart T-shirt',
+     'Classic svart T-shirt', 
+     'https://placehold.co/400x580?text=Black+T-shirt', 'AAA111', 
+     '199'
+     );
